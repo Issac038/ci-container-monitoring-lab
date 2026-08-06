@@ -1,0 +1,9 @@
+**/node_modules
+npm-debug.log
+.git
+.github
+docs
+grafana
+prometheus
+docker-compose.yml
+README.md

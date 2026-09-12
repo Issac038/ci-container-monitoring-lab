@@ -101,3 +101,19 @@ commit and redeploy, or rebuild from a previous tag:
 git revert <commit>          # revert a bad release
 docker compose up -d --build # redeploy the reverted version
 ```
+
+## Cloud release mapping
+
+The local flow maps to a no-surprises cloud release as follows:
+
+| Local flow | Google Cloud equivalent |
+|------------|-------------------------|
+| Build the Docker image | Build the image with Cloud Build |
+| Store the image locally | Push it to Artifact Registry |
+| `docker compose up -d` | Deploy the image to Cloud Run |
+| Prometheus and Grafana | Use Cloud Monitoring dashboards and alerting |
+
+The cloud version would publish an immutable image tag to Artifact Registry,
+deploy that tag to Cloud Run, and use Cloud Monitoring to observe request rate,
+latency, errors, and service health. This mapping is documentation only; this
+repository does not require a cloud account or billing.
